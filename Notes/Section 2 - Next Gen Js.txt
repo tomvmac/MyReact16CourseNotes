@@ -1,0 +1,209 @@
+Use https://jsbin.com
+
+
+let / const:
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+arrow functions:
+
+
+non arrow function version:
+
+function printMyName(name) {
+  console.log(name);
+}
+
+printMyName();
+
+-------------------------------------
+
+arrow function version:
+
+// 
+const printMyName = (name) => {
+  console.log(name);
+}
+
+// short hand for arrow function with only 1 arg
+const printMyName = (name) => { ... }
+
+// short hand for arrow function with only 0 arg
+const printMyName = () => { ... }
+
+// short hand for arrow function with only multi arg
+const printMyName = (name, age) => { ... }
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Exports & Imports (Modules):
+
+person.js:
+
+const person = { name: 'Max' }
+
+export default person
+
+-----------------------------------------
+
+utility.js
+
+export const clean = () => {...}
+export const baseData = 10;
+
+-------------------------------------------------------------
+
+app.js
+
+// import entire file
+import person from './person.js'
+import prs from './person.js'
+
+// import specific methods and props
+import { baseData } from './utility.js'
+import { clean } from './utility.js'
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Js Clases:
+
+// class definition
+class Person {
+	constructor(){
+		super(); // call parent class constructor
+	}
+
+	name = "Max"
+	myFunc = () => {...}
+
+}
+
+// class usage
+const myPerson = new Person()
+myPerson.myFunc()
+
+// class inheritance
+class Person extends Master
+
+-------------------------------------------------------------
+
+Properties & Methods:
+
+
+// ES6
+constructor () {
+	this.myProperty = 'value'
+}
+
+// ES7
+myProperty = 'value'
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Spread & Rest Operators:
+
+...
+
+
+Spread: Used to split up array elements or obj props
+
+const newArray = [...oldArray, 1, 2]
+const newObject = {...oldObject, newProp: 5}
+
+
+ex)
+// spread array
+const numbers = [1, 2, 3];
+const newNumbers = [...numbers, 4];
+
+console.log(newNumbers);
+
+// spread obj
+const person = { name: 'Max'};
+const newPerson = {...person, age:30};
+
+console.log(newPerson);
+
+
+-------------------------------------------------------------
+
+Rest: Used to merge a list of function args into an args
+
+function sortArgs(...args) {
+	return args.sort()
+}
+
+ex)
+
+// rest
+const doSomething = (...args) => {
+  for (var i in args) {
+	console.log(args[i]);
+	} 
+}
+
+doSomething(1, 2, 3, 4);
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Destructuring: Extract array elements or object properties and store them in variables
+
+* Applies to arrays and objects just like spread & rest
+
+// Array Destructuring
+[a, b] = ['Hello', 'Max']
+console.log(a) // Hello
+console.log(b) // Max
+
+// destructuring array
+
+const numbers = [1, 2, 3];
+[num1, num2] = numbers;
+
+console.log(num1);
+console.log(num2);
+
+
+// Object Destructuring
+{name} = {name: 'Max', age: 28}
+console.log(name) // Max
+console.log(age) // undefined
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Reference / Primitive Types:
+
+Primitive Types: numbers, string, date -> store by value or copy value
+
+Reference Types: objects -> store by reference
+
+
+how to copy object in an immutative way:
+// use spread
+const person = {..}
+const person2 = {...person}  // copy using spread
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Array Functions:
+
+map, reduce, filter, sort
+
+
+// map
+const numbers = [1, 2, 3];
+
+const doubleNumArray = numbers.map((num) => {
+  return num * 2;
+});
+                                  
+console.log(numbers);
+console.log(doubleNumArray);
+
+
+https://davidwalsh.name/combining-js-arrays
+https://www.w3schools.com/js/js_array_methods.asp

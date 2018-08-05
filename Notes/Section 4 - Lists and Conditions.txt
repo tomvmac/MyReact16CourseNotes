@@ -1,0 +1,139 @@
+Conditional coding:
+
+Ternary expression:
+
+{ this.state.showPersons ?
+          <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            click={this.switchNameHandler.bind(this, "MJ")}
+            changed={this.nameChangeHandler}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+            click={this.switchNameHandler}
+          />
+        </div>
+        : null
+        }
+		
+		
+-------------------------------------------------------------
+
+Another way to conditional display:
+
+if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            click={this.switchNameHandler.bind(this, "MJ")}
+            changed={this.nameChangeHandler}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+            click={this.switchNameHandler}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <button style={style} onClick={this.togglePersonHandler}>
+          Toggle
+        </button>
+        {persons}
+      </div>
+    );		
+	
+--------------------------------------------------------------------------------------------------------------------------------
+
+Display list of data:
+
+Use javascript map function to display a list of persons:
+
+<div>
+  {
+	this.state.persons.map(person => {
+	  return <Person
+	  name={person.name}
+	  age={person.age}
+	/>
+	})
+  }
+</div>
+		
+-------------------------------------------------------------
+
+Updating a list in state.  This should be done with creating a copy of the object this.setState to a new object.
+
+  deletePersonHandler = (personIndex) => {
+    // copy array by using slice
+    //const persons = this.state.persons.slice();
+    // copy array by using spread
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({
+      persons: persons
+    })
+  }
+  
+-------------------------------------------------------------
+
+Updating state without mutation:
+
+  nameChangeHandler = (event, id) => {
+
+    // Find index of the person to change
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+    
+    // alternative solution with object assign
+    //const person = Object.assign({}, this.state.persons[personIndex]);
+
+    person.name = event.target.value;
+
+    // Create a new array of persons to put into state
+    const persons = [...this.state.persons]
+    persons[personIndex] = person;
+
+    this.setState({
+      persons: persons
+    });
+  };
+
+
+<div>
+          {
+            this.state.persons.map((person, index) => {
+              return <Person
+              click={() => this.deletePersonHandler(index)}
+              name={person.name}
+              age={person.age}
+              key={person.id}
+              changed={(event) => this.nameChangeHandler(event, person.id)}
+            />
+            })
+          }
+        </div>  

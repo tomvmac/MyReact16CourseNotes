@@ -1,0 +1,110 @@
+Props:
+
+Props are attributes passed to components from outside or usage of the component.
+
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <Person name="Max" age="28"/>
+        <Person name="Tom" age="25"/>
+        <Person name="Kobe" age="39">My Hobbies: Basketball</Person>
+      </div>
+    );
+  }
+}
+
+-------------------------------------------------------------
+
+import React from 'react';
+
+const Person = (props) => {
+    return <p>My name is {props.name} and I am {props.age} years old.</p>
+};
+
+export default Person;
+
+-------------------------------------------------------------
+
+passing in innerHtml: 
+<Person name="Kobe" age="39">My Hobbies: Basketball</Person>
+
+accessing innerHtml:
+use {props.children}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+State:
+
+State is data managed inside the component.
+
+State is ONLY available to Class Components.
+
+-------------------------------------------------------------
+
+// init state
+state = {
+    persons: [
+      { name: 'Jordan', age:23},
+      { name: 'Kobe', age:24},
+      { name: 'Lebron', age:23}
+    ]
+  }
+
+// setting state  
+switchNameHandler = () => {
+// console.log("was clicked");
+this.setState({
+  persons: [
+	{ name: "Michael Jordan", age: 23 },
+	{ name: "Kobe Bryant", age: 24 },
+	{ name: "Lebron James", age: 23 }
+  ]
+});
+};  
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Event Handlers:
+
+ switchNameHandler = () => {
+    console.log("was clicked");
+  }
+
+<button onClick={this.switchNameHandler}>Switch Name</button>  
+
+
+Generally changing state should ONLY be done on containers or Class Components.
+
+
+*Calling event handlers from other components:
+
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          click={this.switchNameHandler}
+        />
+
+		
+Bind Method:
+<button onClick={this.switchNameHandler}>Switch Name</button>
+ <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          click={this.switchNameHandler.bind(this, 'MJ')}
+        />
+
+Arrow function method:
+// may be called too often and performance hit
+<button onClick={()=>this.switchNameHandler('MJ')}>Switch Name</button>		
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Two way data binding:
+
+ <input type="text" onChange={props.changed} value={props.name}/>
+  
+
+
