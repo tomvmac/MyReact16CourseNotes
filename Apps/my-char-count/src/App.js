@@ -8,29 +8,23 @@ import CharComponent from './components/CharComponent';
 class App extends Component {
 
   state = {
-    userName: '',
-    userNameChars: []
+    userName: ''
   };
 
   userNameChangeHandler = (event) => {
-    // console.log("Enter userNameChangeHandler");
-    // console.log(event.target.value);
-
     const userName = event.target.value;
-    const userNameChars = [...userName];
 
     this.setState({
-      userName: userName,
-      userNameChars: userNameChars
+      userName: userName
     })
 
   } 
 
   userNameCharacterHandler = (event, myChar, charIndex) => {
-    console.log("Enter userNameCharacterHandler");
-    console.log(event.target.value);
-    console.log(myChar);
-    console.log(charIndex);
+    // console.log("Enter userNameCharacterHandler");
+    // console.log(event.target.value);
+    // console.log(myChar);
+    // console.log(charIndex);
 
     const userNameChars = [...this.state.userName];
     const removeIndex = charIndex;
@@ -44,18 +38,18 @@ class App extends Component {
 
     // Update state to remove character from 
     this.setState({
-      userName: newUserName,
-      userNameChars: newUserNameChars
+      userName: newUserName
     })
 
   }
 
 
   render() {
+    let userNameChars = this.state.userName.split("");
     let charComponents = (
       <div>
         {
-          this.state.userNameChars.map((userNameChar, index) => {
+          userNameChars.map((userNameChar, index) => {
               return <CharComponent
                   currentChar={userNameChar}
                   click={(event) => this.userNameCharacterHandler(event, userNameChar, index)}
@@ -82,9 +76,6 @@ class App extends Component {
           onChange ={this.userNameChangeHandler}
           value={this.state.userName}
           />
-        {/* <p>
-          Username of {this.state.userName} is {this.state.userName.length} characters long.
-        </p>   */}
         <ValidationComponent 
             userName={this.state.userName}
             userNameLength={this.state.userName.length}
