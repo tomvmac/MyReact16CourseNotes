@@ -1,0 +1,112 @@
+How to change inline style dynamically:
+
+// initial style
+const style = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "2px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+	
+	
+// change style dynamically based on some condition
+if (this.state.showPersons) {
+      style.backgroundColor = 'red';
+}	  
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+How to dynamically change className:
+
+App.css:
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+App.js:
+
+let classes = [];
+if (this.state.persons.length <=2){
+  classes.push('red'); 
+}
+if (this.state.persons.length <=1){
+  classes.push('bold'); 
+}
+
+// Remember that classes must be in form of a string
+<p className={classes.join(' ')}>This is really working</p>
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+hover selector for button:
+
+Use pseudo selectors and inline selectors:
+
+Install radium use inline styles with pseudo selectors and inline selectors:
+npm install --save radium
+
+Import radium to App.js:
+import Radium from 'radium';
+export default Radium(App);
+
+// initial style with hover
+const style = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "2px solid blue",
+      padding: "8px",
+      cursor: "pointer",
+      ':hover': {
+          backgroundColor: 'lightgreen',
+          color: 'black'
+      }
+    };
+
+// dynamically change hover
+if (this.state.showPersons) {
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
+      }	
+
+-------------------------------------------------------------
+
+Media query with radium in :
+
+// import StyleRoot from radium
+import Radium, {StyleRoot} from 'radium';	  
+
+// wrap entire main div with StyleRoot
+<StyleRoot>
+	<div className="App">
+	<h1>Hi, I'm a React App</h1>
+	<p className={classes.join(' ')}>This is really working</p>
+	<button style={style} onClick={this.togglePersonHandler}>
+	  Toggle
+	</button>
+	{persons}
+	</div>
+</StyleRoot>
+
+
+Persons.js:
+const style = {
+        '@media (min-width: 500px)':{
+            width: '450px'
+        }
+    }
+	
+<div className="Person" style={style}>...</div>	
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+css modules
+
