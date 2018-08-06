@@ -110,5 +110,8 @@ const style = {
 
 css modules - scoped css files:
 
+unlock css modules
+
+>npm run eject
 
 
