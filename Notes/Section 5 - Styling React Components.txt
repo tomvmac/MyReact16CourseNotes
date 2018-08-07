@@ -112,6 +112,43 @@ css modules - scoped css files:
 
 unlock css modules
 
+// npm run eject expors all dependencies
 >npm run eject
+
+added:
+/config
+/scripts
+
+-------------------------------------------------------------
+
+use webpack.config.dev.js to handle css modules:
+With CSS modules, you can write normal CSS code and make sure, that it only applies to a given component.
+
+test: /\.css$/,
+use: [
+  require.resolve('style-loader'),
+  {
+	loader: require.resolve('css-loader'),
+	options: {
+	  importLoaders: 1,
+	  modules: true,
+	  localIdentName: '[name]__[local]__[hash:base64:5]'
+	},
+
+-------------------------------------------------------------
+
+App.js:
+
+import classes from './App.css';	
+
+<div className={classes.App}>
+
+* Note:  css modules are scoped to the component that 
+
+-------------------------------------------------------------
+
+Adding pseudo selectors and media queries via css modules:
+
+
 
 
