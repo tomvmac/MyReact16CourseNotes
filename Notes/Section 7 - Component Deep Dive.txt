@@ -1,0 +1,101 @@
+Component Deep Dive:
+
+
+In general, container components like App.js, the render method should be rather lean and not include that much details on other components.  
+
+Need to further break down the components composition.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Structure:
+
+/containers  - React container components, that manages and manipulates state, event handlers
+/components  - React components - presentation only components
+/assets - images, etc.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Refactored Persons component:
+
+import React from "react";
+import Person from './Person/Person';
+
+// omitt return statement in es6 arrow function
+const Persons = props =>
+  props.persons.map((person, index) => {
+    return (
+      <Person
+        click={() => props.clicked(index)}
+        name={person.name}
+        age={person.age}
+        key={person.id}
+        changed={event => props.changed(event, person.id)}
+      />
+    );
+  });
+
+  export default Persons;
+  
+  
+// usage
+<div>
+	<Persons 
+	  persons={this.state.persons}
+	  clicked={this.deletePersonHandler}
+	  changed={this.nameChangeHandler}
+	/>
+</div>  
+-------------------------------------------------------------
+
+Stateless vs Stateful Components:
+
+Stateful Components 
+- Class Components
+- Access to State  
+- Lifecycle Hooks
+
+Stateless Components
+- Function Components
+- Access to Props (only no state)
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Component Lifecycle:
+
+Component Creation:
+- constructor
+	- Call super(props)
+	- Initialize state
+	- Do not and should not cause side effects like (calling external API)
+- componentWillMount
+	- Update state
+	- Last minute optimization
+	- Don't cause side effects	
+- render
+	- Prepare & structure jsx code
+	- Render child components
+- componentDidMount
+	- Can cause side effects
+	- Don't update state (triggers re-render)
+	
+	
+	
+- componentWillUnmount	
+- componentWillReceiveProps
+- componentWillUpdate
+- componentDidCatch
+- componentWillMount
+- shouldComponentUpdate
+- componentDidUpdate
+- componentDidMount
+- render
+
+
+
+
+
+
+
+
+

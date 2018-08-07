@@ -1,0 +1,102 @@
+Debugging React Apps:
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Syntax Error Messages:
+
+App.js:
+
+nameChangeHandler = (event, id) => {
+...
+    // make a mistake on purpose,  
+    person.name = event.input.value;
+}
+
+App.js:32 Uncaught TypeError: Cannot read property 'value' of undefined
+    at App._this.nameChangeHandler (App.js:32)
+    at changed (App.js:77)
+
+-------------------------------------------------------------
+	
+Note: Code files and line numbers referenced from console.
+
+--------------------------------------------------------------------------------------------------------------------------------
+	
+Logical Errors:
+
+  nameChangeHandler = (event, id) => {
+
+    // Find index of the person to change
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.userId === id;
+    });
+
+-------------------------------------------------------------	
+
+Note: Chrome Dev Tools, Source and then point a break point on App.js or add a debugger; statement to code 
+
+-------------------------------------------------------------
+
+Add React Developer Tools:
+
+- See React Components
+- props
+- state
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Throwing errors with Error Boundary:
+
+Person.js:
+const rnd = Math.random();
+if (rnd > 0.7){
+	throw new Error("Something went wrong");
+}
+
+
+ErrorBoundary.js:
+
+class ErrorBoundary extends Component {
+    state = {
+        hasError: false,
+        errorMessage: ''
+    }
+
+    componentDidCatch = (error, info) => {
+        this.stateState({
+            hasError: true,
+            errorMessage: error
+        })
+    }
+
+    render(){
+        if (this.state.hasError){
+            return <h1>{this.state.errorMessage}</h1>;
+        } else {
+            return this.props.children;
+        }
+
+    }
+}
+
+// usage - wrap ErrorBoundary around react component
+App.js:
+ <ErrorBoundary><Person>...</Person></ErrorBoundary>
+ 
+this.state.persons.map((person, index) => {
+              return <ErrorBoundary key={person.id}><Person
+              click={() => this.deletePersonHandler(index)}
+              name={person.name}
+              age={person.age}
+              
+              changed={(event) => this.nameChangeHandler(event, person.id)}
+            /></ErrorBoundary>
+
+
+			
+
+
+
+
+
