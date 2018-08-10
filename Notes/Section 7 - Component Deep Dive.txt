@@ -63,6 +63,8 @@ Stateless Components
 
 Component Lifecycle:
 
+https://reactjs.org/docs/react-component.html
+
 Component Creation:
 - constructor
 	- Call super(props)
@@ -79,22 +81,97 @@ Component Creation:
 	- Can cause side effects
 	- Don't update state (triggers re-render)
 	
+-------------------------------------------------------------	
 	
-	
-- componentWillUnmount	
+Component Update (triggered by Parent:
 - componentWillReceiveProps
-- componentWillUpdate
-- componentDidCatch
-- componentWillMount
+	- sync state with props
+	- don't creat side effects, no api calls
 - shouldComponentUpdate
-- componentDidUpdate
-- componentDidMount
+	- nextProps, nextState
+	- may cancel updating - may save on performance by not having to re-load
+	- sync state to props
+- componentWillUpdate
+	
 - render
+- update Child component props
+- componentDidUpdate
+	
+-------------------------------------------------------------
+Component Update (triggered by Internal Change, state change):	
+	
+- shouldComponentUpdate
+	- decide to continue or not
+- componentWillUpdate
+	- sync state to props
+- render
+	- update child component props
+	- prepare and structure jsx code
+- componentDidUpdate
+
+* Note componentWillReceiveProps is not called for internal changes.
+	
+-------------------------------------------------------------
+
+Convert Persons from function component to a Class component to demo the life cycle methods.
+
+- Added life cycle methods to App.js and init state in constructor.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+PureComponent:
+
+Use PureComponent when updates are not required.
+
+https://stackoverflow.com/questions/41340697/react-component-vs-react-purecomponent
 
 
+--------------------------------------------------------------------------------------------------------------------------------
+
+How does React Updates the DOM:
+
+Compare virtual doms (old virtual dom vs re-rendered virtual dom)
+
+- re-rendered dom is created whenever the render() method is called.
+- detect diff
+- React will only change the real DOM and ONLY make the differences
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Jsx rendering:
+
+- multiple elements must be wrapped within a <div>
+- exception would be an array with multiple elements within.
+
+-------------------------------------------------------------
+Another way around it would be to create a component that holds props.children:
+
+// Aux Component
+const aux = (props) => props.children;
+export default aux;
 
 
+// Using Aux Component to wrap, so there is no extra html div tag
+<Aux>
+	<p>...</p>
+	<p>...</p>
+</Aux>
 
+-------------------------------------------------------------
+
+React 16 - Fragments feature:
+<>
+    <h1>First Element</h1>
+    <h1>Second Element</h1>
+</>
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+How to pass on existing props:
+
+// pass on the props from parent to children components
+<WrappedComonent {...props} />
 
 
 

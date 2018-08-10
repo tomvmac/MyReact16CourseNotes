@@ -5,14 +5,31 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-  state = {
-    persons: [
-      { id:1, name: "Michael Jordan", age: 23 },
-      { id:2, name: "Kobe Bryant", age: 24 },
-      { id:3, name: "Lebron James", age: 26 }
-    ],
-    showPersons: false
-  };
+
+  // Component Life Cycle
+  constructor(props){
+    super(props);
+    console.log("App.js -> constructor", props);    
+    this.state = {
+      persons: [
+        { id:1, name: "Michael Jordan", age: 23 },
+        { id:2, name: "Kobe Bryant", age: 24 },
+        { id:3, name: "Lebron James", age: 26 }
+      ],
+      showPersons: false
+    };
+
+  }
+
+  componentWillMount(){
+    console.log("App.js -> componentWillMount");
+  }
+
+  componentDidMount(){
+    console.log("App.js -> componentDidMount");
+  }
+
+  
 
 
   nameChangeHandler = (event, id) => {
@@ -60,6 +77,7 @@ class App extends Component {
 
   render() {
 
+    console.log("App.js -> render()");
     let persons = null;
     
 
@@ -82,6 +100,7 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
+        <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
         <Cockpit 
           showPersons={this.state.showPersons}
           persons={this.state.persons}
