@@ -173,6 +173,37 @@ How to pass on existing props:
 // pass on the props from parent to children components
 <WrappedComonent {...props} />
 
+--------------------------------------------------------------------------------------------------------------------------------
 
+Using setState when it needs to get the previous state or mutating state:
 
+ex) increment state variable 
 
+this.setState( (prevState, props) => {
+	return {
+		toggleClicked: prevState.toggleClicked + 1
+	}
+});
+
+Note: Never use setState and using this.state.something, because setState is done async
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+How to check and validate incoming props:
+
+// npm library
+npm --save prop-types
+
+// import prop-types lib into your Component
+import PropTypes from "prop-types";
+
+// put PropTypes at the end of the class outside of the class definition
+Person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
+};
+
+Resources Links:
+https://reactjs.org/docs/typechecking-with-proptypes.html
