@@ -15,6 +15,11 @@ class Person extends Component {
 
   componentDidMount() {
     console.log("Person.js -> componentDidMount");
+    // check for position of Person in Persons and only focus on first Person 
+    if (this.props.position ===0){
+      this.nameInput.focus();
+    }
+    
   }
 
   render() {
@@ -26,7 +31,11 @@ class Person extends Component {
             My name is {this.props.name} and I am {this.props.age} years old.
         </p>
         <p>{this.props.children}</p>
-        <input type="text" onChange={this.props.changed} value={this.props.name} />
+        <input 
+          ref={(inputElement) => {this.nameInput = inputElement}}
+          type="text" 
+          onChange={this.props.changed}
+          value={this.props.name} />
         </div>
     );
   }

@@ -207,3 +207,49 @@ Person.propTypes = {
 
 Resources Links:
 https://reactjs.org/docs/typechecking-with-proptypes.html
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+References:
+
+Use Case:
+- How to access a html element like input tag and then focus to it? 
+
+
+Usage:
+
+ <input 
+  ref={(inputElement) => {this.nameInput = inputElement}}
+  type="text" 
+  onChange={this.props.changed}
+  value={this.props.name} />
+
+  
+componentDidMount() {
+console.log("Person.js -> componentDidMount");
+// check for position of Person in Persons and only focus on first Person 
+if (this.props.position ===0){
+  this.nameInput.focus();
+}
+
+}
+		  
+		  
+Notes:
+Can be used to html and custom Components
+
+Resources:
+
+https://reactjs.org/docs/refs-and-the-dom.html
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+React 16 New Features:
+
+
+
+
+	
+
