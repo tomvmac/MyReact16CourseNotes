@@ -46,3 +46,14 @@ Create React Js app for BurgerBuilder:
 npx create-react-app my-burger-builder
  
 npm run eject 
+
+- enable css modules
+update webpack.config.dev.js and webpack.config.prod.js to handle css modules, see Section 5 Styling React Components for details.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+https://fonts.google.com/
+
+Open Sans
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">

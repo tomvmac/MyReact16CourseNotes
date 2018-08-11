@@ -120,9 +120,13 @@ added:
 /scripts
 
 -------------------------------------------------------------
+apply following updates to webpack.config.dev.js and webpack.config.prod.js:
+// include lines into the options area:
+modules: true,
+localIdentName: '[name]__[local]__[hash:base64:5]'
 
-use webpack.config.dev.js to handle css modules:
-With CSS modules, you can write normal CSS code and make sure, that it only applies to a given component.
+-------------------------------------------------------------
+webpack.config.dev.js:
 
 test: /\.css$/,
 use: [
@@ -134,6 +138,7 @@ use: [
 	  modules: true,
 	  localIdentName: '[name]__[local]__[hash:base64:5]'
 	},
+
 
 -------------------------------------------------------------
 
