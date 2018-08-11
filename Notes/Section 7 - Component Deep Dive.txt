@@ -248,8 +248,73 @@ https://reactjs.org/docs/refs-and-the-dom.html
 
 React 16 New Features:
 
+References:
 
+// Initialize ref
+constructor(props){
+	this.inputElement = React.createRef();
+}
 
-
+// Associate ref to element
+<input 
+	ref = {this.inputElement} />
 	
+// Using the ref
+this.inputElement.current.focus();	
+
+-------------------------------------------------------------
+
+forwarded Ref:
+
+React.forwardRef(props, ref)
+	
+-------------------------------------------------------------
+
+Context API:
+
+Pass state throughout app or global settings
+
+- outside of class
+
+// create context outside of class and init to false value
+export const AuthContext = React.createContext(false);  
+
+// setting context
+context uses with Provider and Consumer
+
+<AuthContext.Provider value={this.state.authenticated}>
+	{persons}
+</AuthContext>
+
+// using context
+Person.js:
+import { AuthContext } from '../App'
+
+<AuthContext.Consumer>
+	{auth => auth ? <p>something</p> : null}
+</AuthContext.Consumer>	
+
+-------------------------------------------------------------
+
+React 16 Life Cycle Hooks:
+
+Currently discouraged hooks:
+
+- componentWillMount
+- componentWillUpdate
+- componentWillReceiveProps
+
+They are often misused, ppl may set state.
+
+------------------
+
+New Life Cycle Hooks:
+
+- getDerivedStateFromProps(nextProps, prevState)
+	- executed when props are updated and when you want to update state accordingly
+	
+
+
+
+
 
