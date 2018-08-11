@@ -1,0 +1,48 @@
+Planning the Burger React App:
+
+1. Component Tree / Component Structure
+2. Application State (Data)
+3. Components vs Containers
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+App Layout and Component Tree
+
+App
+Layout
+- Toolbar
+	- Drawer Toggle
+	- Logo
+	- Navigation Items
+- SideDrawer (mobile)
+	- Logo
+	- Navigation Items
+- Backdrop (for showing modals)
+- Various Pages
+	- Burger Builder (Stateful Container)
+		- Build Controls
+			- Build Control
+			- Order Button
+		- Burger
+			- Ingredient
+		- Modal (Checkout)
+			- {props.children} - generic modal
+			
+--------------------------------------------------------------------------------------------------------------------------------
+
+State:
+
+- Ingredients
+	{meat: 1, cheese: 2}
+- purchased: true
+- totalPrice: 12.99
+
+Where should we manage the state of the burger?  BurgerBuilder component makes senses because it affects the burger.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Create React Js app for BurgerBuilder:
+
+npx create-react-app my-burger-builder
+ 
+npm run eject 
