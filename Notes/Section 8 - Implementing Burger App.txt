@@ -21,8 +21,8 @@ containers/BurgerBuilder/BurgerBuilder.js
 
 Burger Components:
 
-components/Burger/Burger.js
 
+Burger Ingredient Component:
 components/Burger/BurgerIngredient/BurgerIngredient.js
 - added BurgerIngredient.css
 - returns an ingredient based on props.type (like meat, salad, etc.)
@@ -31,3 +31,13 @@ components/Burger/BurgerIngredient/BurgerIngredient.js
 - add prop types 
 	npm install --save prop-types
 - convert BurgerIngredient.js from functional component to class component	
+
+
+-------------------------------------------------------------
+
+Burger Component:
+
+components/Burger/Burger.js
+
+- use a list of burger ingredients
+- added Burger.css with media queries
