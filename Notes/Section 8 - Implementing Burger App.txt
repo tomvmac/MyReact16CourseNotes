@@ -16,3 +16,10 @@ Notes:
 Burger Builder Component:
 
 containers/BurgerBuilder/BurgerBuilder.js
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Burger Components:
+
+components/Burger/Burger.js
+comopnents/Burger/BurgerIngredient/BurgerIngredient.js
