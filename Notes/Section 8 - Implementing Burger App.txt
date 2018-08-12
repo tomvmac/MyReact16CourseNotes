@@ -20,6 +20,15 @@ containers/BurgerBuilder/BurgerBuilder.js
 - add state
 - dynamically add ingredients
 
+-------------------------------------------------------------
+
+Build Controls:
+
+- controls to allow user to add/remove ingredients
+- BuildControl component - used to include button Less and More
+
+
+
 
 
 --------------------------------------------------------------------------------------------------------------------------------
