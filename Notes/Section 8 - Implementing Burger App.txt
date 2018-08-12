@@ -18,6 +18,7 @@ Burger Builder Component:
 containers/BurgerBuilder/BurgerBuilder.js
 
 - add state
+- dynamically add ingredients
 
 
 
@@ -35,6 +36,8 @@ components/Burger/BurgerIngredient/BurgerIngredient.js
 - add prop types 
 	npm install --save prop-types
 - convert BurgerIngredient.js from functional component to class component	
+
+- use reduce to flatten the array of ingredients to find out if it is empty
 
 
 -------------------------------------------------------------
