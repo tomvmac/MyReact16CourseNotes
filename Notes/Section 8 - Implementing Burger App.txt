@@ -1,11 +1,15 @@
 Layout Component:
 
 src/components/Layout/Layout.js
+- Include Aux to wrap all adjacent tags
+
+
+src/components/Layout/Layout.css
+- add css class to provide some styling and spacing
 
 
 Notes:
 
-Include Aux to wrap all adjacent tags
 
 --------------------------------------------------------------------------------------------------------------------------------
 
