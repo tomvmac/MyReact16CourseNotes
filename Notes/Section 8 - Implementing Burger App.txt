@@ -69,3 +69,8 @@ UI Components:
 /components/UI/Backdrop
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+Event Handlers:
+
+Should be arrow functions, otherwise the this key word will not scope correctly.
+
