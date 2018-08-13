@@ -85,3 +85,11 @@ This component provides a opacity back drop to fully focus the user to the modal
 Button:
 
 Added custom Button component and used in Order Summary
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Toolbar:
+
+Navigation/Toolbar
+
+This is used in Layout.js
