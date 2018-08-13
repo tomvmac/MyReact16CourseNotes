@@ -58,3 +58,14 @@ components/Burger/Burger.js
 
 - use a list of burger ingredients
 - added Burger.css with media queries
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+UI Components:
+
+
+/components/UI/Modal
+/components/UI/Backdrop
+
+--------------------------------------------------------------------------------------------------------------------------------
