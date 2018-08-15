@@ -112,4 +112,28 @@ Layout.js:
       return {showSideDrawer: !this.state.showSideDrawer};
     })
   }
+  
+--------------------------------------------------------------------------------------------------------------------------------
+
+Proptype validations:
+
+Must be used with class components.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Performance Optimizations:
+
+- Need to re-render stuff
+
+
+BurgerBuilder.js is rendering the Modal and Order Summary every time order details like ingredients change.  We should change it to only re-render if the Modal is visible.
+
+Add life cycle hooks to OrderSummary.js, first convert from function component to class component.
+
+
+
+
+
+  
+  
 	
