@@ -138,6 +138,8 @@ File and Folder Re-structure:
 Layout component should be moved to hoc (higher order component) because Layout is used to wrap other components.
 
 
+
+
   
   
 	
