@@ -131,7 +131,11 @@ BurgerBuilder.js is rendering the Modal and Order Summary every time order detai
 Add life cycle hooks to OrderSummary.js, first convert from function component to class component.
 
 
+--------------------------------------------------------------------------------------------------------------------------------
 
+File and Folder Re-structure:
+
+Layout component should be moved to hoc (higher order component) because Layout is used to wrap other components.
 
 
   
