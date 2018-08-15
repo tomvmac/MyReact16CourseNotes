@@ -94,8 +94,22 @@ Navigation/Toolbar
 
 This is used in Layout.js
 
+- Toolbar holds a SideDrawer
 
 -------------------------------------------------------------
 
 NavigationItems
 	NavigationItem
+	
+	
+--------------------------------------------------------------------------------------------------------------------------------
+
+Note on referencing prevState
+
+Layout.js:
+  sideDrawerToggleHandler = () => {
+    this.setState((prevState) => {
+      return {showSideDrawer: !this.state.showSideDrawer};
+    })
+  }
+	
